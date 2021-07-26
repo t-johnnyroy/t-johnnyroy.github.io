@@ -254,13 +254,13 @@ var j = 100;
 		// catch (error) {
 		// 	writeToPage('Error:' + error.toString());
 		// }
-		if (Office.context.requirements.isSetSupported('RibbonApi', '1.1')) {
+		// if (Office.context.requirements.isSetSupported('RibbonApi', '1.1')) {
 			const parentGroup = { id: "Group1Id12", controls: commandControls };
 			const parentTab = { id: "OfficeAppTab1", groups: [parentGroup] };
 			const ribbonUpdater = { tabs: [parentTab] };
 			// @ts-ignore
 			await Office.ribbon.requestUpdate(ribbonUpdater);
-		}
+		// }
 
 	}
 
