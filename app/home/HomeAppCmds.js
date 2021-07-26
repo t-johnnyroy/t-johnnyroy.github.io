@@ -223,14 +223,6 @@ var j = 100;
 		updateCommandButtonState(false);
 	}
 
-	function showContextualTabs() {
-		updateContextualTabsVisibility(true);
-	}
-
-	function hideContextualTabs() {
-		updateContextualTabsVisibility(false);
-	}
-
 	async function updateCommandButtonState(enabled)
 	{
 		var commandButtonIds = document.getElementById('commandButtonID').value.split(';');
@@ -1245,11 +1237,18 @@ function ChangetoRed(event) {
 	event.completed();
 }
 
-function ShowDialog(event) {
-	//debugger;
-	var currentUrl = document.URL;
-	var dialogPage = currentUrl.substring(0, currentUrl.lastIndexOf("/")) + "/Dialog.html";
-	Office.context.ui.displayDialogAsync(dialogPage, {height: 30, width: 20, displayInIframe: true});
+function ShowAlert(event) {
+	var DialogElements = document.querySelectorAll(".ms-Dialog");
+	var DialogComponents = [];
+	for (var i = 0; i < DialogElements.length; i++) {
+		(function() {
+			DialogComponents[i] = new fabric['Dialog'](DialogElements[i]);
+		}());
+	}
+	// //debugger;
+	// var currentUrl = document.URL;
+	// var dialogPage = currentUrl.substring(0, currentUrl.lastIndexOf("/")) + "/Dialog.html";
+	// Office.context.ui.displayDialogAsync(dialogPage, {height: 30, width: 20, displayInIframe: true});
 	event.completed();
 }
 
