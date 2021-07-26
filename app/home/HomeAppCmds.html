@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="https://kit.fontawesome.com/fd5af65be9.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <!-- <script src="officejsloader.js" type="text/javascript"></script> -->
+
+    <!-- Public CDN Endpoint (w/ redirection) -->
+    <!-- <script src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js" type="text/javascript"></script> -->
+    <!-- <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js" type="text/javascript"></script> -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.debug.js" type="text/javascript"></script>
+
+    <!-- Production CDN Endpoints (wo/ redirection) -->
+    <!-- <script src="https://appsforoffice.officeapps.live.com/afo/lib/beta/hosted/office.debug.js" type="text/javascript"></script> -->
+    <!-- <script src="https://appsforoffice.officeapps.live.com/afo/lib/1.1/hosted/office.debug.js" type="text/javascript"></script> -->
+
+    <!-- Edog CDN Endpoints (wo/ redirection) -->
+    <!-- <script src="https://appsforoffice.edog.officeapps.live.com/lib/beta/hosted/office.debug.js" type="text/javascript"></script> -->
+    <!-- <script src="https://appsforoffice.edog.officeapps.live.com/lib/1.1/hosted/office.debug.js" type="text/javascript"></script> -->
+
+    <!-- Private Office.js release:					                        			-->
+    <!--  <script src="http://osf-agave/rtm/haileiz/testapps2/OfficeJs2/office.js" type="text/javascript"></script> -->
+
+    <!-- Dynamic Ribbon -->
+    <!-- <script src="https://unpkg.com/@microsoft/office-js@1.1.30-custom.8/dist/office.debug.js" type="text/javascript"></script> -->
+
+    <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="HomeAppCmds.js" type="text/javascript"></script>
+    <script src="custom-functions.js" type="text/javascript"></script>
+</head>
+
+<!-- <body onload="onBodyLoad('HomeAppCmds.js')"> -->
+<body>
+<!-- Page content -->
+<div id="content-header">
+    <div class="padding">
+        <h1>Welcome OfficeJS11Test</h1>
+    </div>
+</div>
+<div id="content-main">
+    <div class="padding">
+        <!-- <br />
+        <span>OfficeJS:</span>
+        <div class="dropdown" style="display:inline-block; width:100%;">
+            <input id='officeJsUrlInput' type="text" style="width:90%; display:inline-block;" />
+            <i id='offficeJsDropdown' class="dropbtn fas fa-arrow-down"></i>
+            <div class="dropdown-content">
+                <i href="#" onmouseenter='dropdownHover("edogBeta");' onmouseleave='dropdownLeave()'
+                    onclick='jsLocationChange("edogBeta");'>edogBeta</i>
+                <i href="#" onmouseenter='dropdownHover("edogV11");' onmouseleave='dropdownLeave()'
+                    onclick='jsLocationChange("edogV11");'>edogV11</i>
+                <i href="#" onmouseenter='dropdownHover("prodBeta");' onmouseleave='dropdownLeave()'
+                    onclick='jsLocationChange("prodBeta");'>prodBeta</i>
+                <i href="#" onmouseenter='dropdownHover("prodV11");' onmouseleave='dropdownLeave()'
+                    onclick='jsLocationChange("prodV11");'>prodV11</i>
+            </div>
+        </div>
+        <br /> -->
+        <br />
+        <span>Command ControlIds: </span>
+        <input id="commandButtonID" type="text" value="Tab1Button1;Tab1Menu1Item1" />
+        <button id="enableCmdBtn">Enable Controls</button>
+        <button id="disableCmdBtn">Disable Controls</button>
+        <br />
+        <br />
+        <span>Ribbon Definition: </span>
+        <input id="ribbonDefinitionId" type="text" value="Enter JSON ribbon definition here." />
+
+        <button id="generateRibbonBtn">Generate using definition</button>
+        <button id="generateRandomRibbonDefinitionBtn">Generate random tabs</button>
+        <br />
+        <br />
+        <span>Contextual Tab Ids: </span>
+        <input id="ribbonTabId" type="text" value="CtxTab1;CtxTab2" />
+        <button id="showRibbonTabBtn">Show Contextual Tab</button>
+        <button id="hideRibbonTabBtn">Hide Contextual Tab</button>
+        <br />
+        <br />
+        <button id="writeDataBtn">Write Data </button>
+        <button id="writeDataBindingBtn">Write Data With Binding </button>
+        <button id="readDataBtn">Read Selected Data </button>
+        <br />
+        <span>Binding Name: </span>
+        <input id="bindingName" type="text" value="Mybinding" />
+        <br />
+        <button id="bindDataBtn">Bind Selected Data </button>
+        <button id="getbindsBtn">Get all Bindings</button>
+        <button id="setBoundDataBtn">Set Bound Data </button>
+        <button id="readBoundDataBtn">Read Bound Data </button>
+        <button id="releaseBindingBtn">Release Bound </button>
+        <button id="setsettingBtn">Set Setting </button>
+        <button id="getsettingBtn">Get Setting </button>
+        <br />
+        <input id="settingName" type="text" value="backgroundColor" /> <input id="settingvalue" type="text"
+                                                                              value="1" /><button id="setSettingDataBtn">Set and Save Settings </button>
+        <br />
+        <button id="saveAutoShowTaskpaneBtn">Set AutoShowTaskpaneWithDocument</button> <input id="showtaskpane"
+                                                                                              type="checkbox" Checked />
+        <br />
+        <input id="getsettingName" type="text" value="backgroundColor" />
+        <button id="getSettingDataBtn">Add SettingsChanged Event </button>
+        <button id="RemoveSettingDataBtn">Remove SettingsChanged Event </button>
+        <br />
+        <button id="addSelectionChangedEvent">Add Selection Changed Event</button>
+        <button id="removeSelectionChangedEvent">Remove Selection Changed Event</button>
+        <button id="addBDataChgEventBtn">Add BindingDataChanged Event </button>
+        <button id="removeBDataChgEventBtn">Remove BindingDataChangedEvent </button>
+        <button id="addBSltChgEventBtn">Add BindingSelectionChanged Event </button>
+        <button id="removeBSltChgEventBtn">Remove BindingSelectionChanged Event </button>
+        <button id="addDocSltChgEventBtn">Add DocumentSelectionChanged Event </button>
+        <button id="removeDocSltChgEventBtn">Remove DocumentSelectionChanged Event </button>
+        <br />
+        <button id="runPerfBtn"> Run Perf </button>
+        <br />
+        <br />
+        <button id="getQueryStringBtn"> Get URL Query String </button>
+        <br />
+        <button id="goToNextSlideBtn">Next Slide</button>
+        <br />
+        <br />
+        <span>Results: </span>
+        <div id="results"></div>
+
+        <br />
+        <a href='https://jackychen.azurewebsites.net/agaves/WacApiAgaveWeb/App/Home/ShowDialogApiParentPage.html'>Henry's
+            page</a>
+        <br />
+        <a href='HomeAppCmds_gary.html'>gary's page</a>
+        <br />
+        <a href='HomeAppCmds_Sean.html'>Sean's page</a>
+        <br />
+        <a href='HomeAppCmds_Sylvain.html'>Sylvain's page</a>
+        <br />
+        <a href='HomeAppCmds_One.html'>Page One</a>
+        <br />
+        <a href='HomeAppCmds_Two.html'>Page Two</a>
+        <br />
+        <a href='HomeAppCmds_Three.html'>Page Three</a>
+        <br />
+        <a href='HomeAppCmds_Four.html'>Page Four</a>
+        <br />
+        <a href='HomeAppCmds_Five.html'>Page Five</a>
+        <br />
+        <a href='HomeAppCmds_Six.html'>Page Six</a>
+        <br />
+        <a href='HomeAppCmds_Seven.html'>Page Seven</a>
+        <br />
+        <a href='HomeAppCmds_Eight.html'>Page Eight</a>
+        <br />
+        <a href='HomeAppCmds_Nine.html'>Page Nine</a>
+        <br />
+        <a href='HomeAppCmds_Ten.html'>Page Ten</a>
+        <br />
+    </div>
+</div>
+<script>
+	var defaultribbondef = {
+		"actions": [
+			{
+				"id": "executeWriteData",
+				"type": "ExecuteFunction",
+				"functionName": "writeData"
+			},
+			{
+				"id": "executeWriteformula",
+				"type": "ExecuteFunction",
+				"functionName": "writeformula"
+			},
+			{
+				"id": "showTaskpanewiki",
+				"type": "ShowTaskpane"
+			},
+			{
+				"id": "showTaskpaneResCFSample",
+				"type": "ShowTaskpane",
+				"sourceLocation": "https://officedev.github.io/custom-functions/addins/cfsample2/sharedapp.html",
+				"taskpaneId": "Taskpane1",
+				"title": "TakspaneTitle",
+				"supportPinning": false
+			},
+			{
+				"id": "showTaskpaneResAppCmds",
+				"type": "ShowTaskpane",
+				"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+				"taskpaneId": "Taskpane1",
+				"title": "TakspaneTitle",
+				"supportPinning": false
+			}
+		],
+		"tabs": [
+			{
+				"id": "CtxTab1",
+				"label": "CtxTab1",
+				"visible": true,
+				"groups": [
+					{
+						"id": "CustomGroup111",
+						"label": "Group11Title",
+						"icon": [
+							{
+								"size": 16,
+								"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+							},
+							{
+								"size": 32,
+								"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+							},
+							{
+								"size": 80,
+								"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+							}
+						],
+						"controls": [
+							{
+								"type": "Button",
+								"id": "CtxBt111",
+								"enabled": true,
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"label": "STP_CtxBt111",
+								"toolTip": "Btn111ToolTip",
+								"superTip": {
+									"title": "Btn111SupertTipeTitle",
+									"description": "Btn111SuperTipDesc"
+								},
+								"actionId": "showTaskpaneResAppCmds"
+							},
+							{
+								"type": "Button",
+								"id": "CtxBt112",
+								"enabled": true,
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"label": "ExeFunc_CtxBt112",
+								"toolTip": "Btn112ToolTip",
+								"superTip": {
+									"title": "Btn112SupertTipeTitle",
+									"description": "Btn112SuperTipDesc"
+								},
+								"actionId": "executeWriteData"
+							},
+							{
+								"type": "Button",
+								"id": "CtxBt113",
+								"enabled": false,
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"label": "STP_CtxBt113",
+								"toolTip": "STP_CtxBt113",
+								"superTip": {
+									"title": "Btn111SupertTipeTitle",
+									"description": "Btn111SuperTipDesc"
+								},
+								"actionId": "showTaskpanewiki"
+							},
+							{
+								"type": "Button",
+								"id": "CtxBt114",
+								"enabled": true,
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"label": "ExeFunc_CtxBt114",
+								"toolTip": "Btn114ToolTip",
+								"superTip": {
+									"title": "Btn114SupertTipeTitle",
+									"description": "Btn112SuperTipDesc"
+								},
+								"actionId": "executeWriteData"
+							},
+							{
+								"type": "Menu",
+								"id": "CustomRibbonTab1Menu1",
+								"label": "Menu111Label",
+								"toolTip": "Btn112ToolTip",
+								"superTip": {
+									"title": "Btn112SupertTipeTitle",
+									"description": "Btn112SuperTipDesc"
+								},
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"items": [
+									{
+										"type": "MenuItem",
+										"id": "CtxMi111",
+										"enabled": true,
+										"icon": [
+											{
+												"size": 16,
+												"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											},
+											{
+												"size": 32,
+												"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											},
+											{
+												"size": 80,
+												"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											}
+										],
+										"label": "STP_CtxMi111",
+										"toolTip": "Btn111ToolTip",
+										"superTip": {
+											"title": "Btn111SupertTipeTitle",
+											"description": "Btn111SuperTipDesc"
+										},
+										"actionId": "showTaskpanewiki"
+									},
+									{
+										"type": "MenuItem",
+										"id": "CtxMi112",
+										"enabled": false,
+										"icon": [
+											{
+												"size": 16,
+												"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											},
+											{
+												"size": 32,
+												"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											},
+											{
+												"size": 80,
+												"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											}
+										],
+										"label": "ExeFunc_CtxMi112",
+										"toolTip": "Btn111ToolTip",
+										"superTip": {
+											"title": "Btn111SupertTipeTitle",
+											"description": "Btn111SuperTipDesc"
+										},
+										"actionId": "executeWriteformula"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "CtxTab2",
+				"label": "CtxTab2",
+				"visible": false,
+				"groups": [
+					{
+						"id": "CustomGroup211",
+						"label": "Group211Title",
+						"icon": [
+							{
+								"size": 16,
+								"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+							},
+							{
+								"size": 32,
+								"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+							},
+							{
+								"size": 80,
+								"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+							}
+						],
+						"controls": [
+							{
+								"type": "Button",
+								"id": "CtxBt211",
+								"enabled": false,
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"label": "STP_CtxBt211",
+								"toolTip": "Btn211ToolTip",
+								"superTip": {
+									"title": "Btn211SuperTipTitle",
+									"description": "Btn211SuperTipDesc"
+								},
+								"actionId": "showTaskpaneResCFSample"
+							},
+							{
+								"type": "Button",
+								"id": "CtxBt212",
+								"enabled": true,
+								"icon": [
+									{
+										"size": 16,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 32,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									},
+									{
+										"size": 80,
+										"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									}
+								],
+								"label": "ExeFunc_CtxBt212",
+								"toolTip": "Btn212ToolTip",
+								"superTip": {
+									"title": "Btn212SuperTipTitle",
+									"description": "Btn212SuperTipDesc"
+								},
+								"actionId": "executeWriteformula"
+							}
+						]
+					}
+				]
+			}
+		]
+	};
+	document.getElementById("ribbonDefinitionId").value = JSON.stringify(defaultribbondef);
+</script>
+</body>
+
+</html>
