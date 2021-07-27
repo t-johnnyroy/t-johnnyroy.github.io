@@ -1249,7 +1249,7 @@ function ShowAlertTest(event) {
 	// }
 	// //debugger;
 	var currentUrl = document.URL;
-	var dialogPage = currentUrl.substring(0, currentUrl.lastIndexOf("/")) + "/Dialog.html";
+	var dialogPage = "https://www2.latech.edu/~acm/HelloWorld.shtml";
 	Office.context.ui.displayDialogAsync(dialogPage, {height: 30, width: 20, displayInIframe: true});
 	event.completed();
 }
