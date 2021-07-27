@@ -1244,13 +1244,15 @@ function ChangetoRed(event) {
 }
 
 async function BoldText(event) {
-	const range = Word.context.document.getSelection();
-	range.font.color = "red";
-	range.load("text");
+	await Word.run(async (context) => {
+		const range = context.document.getSelection();
+		range.font.color = "red";
+		range.load("text");
 
-	await Word.context.sync();
+		await context.sync();
 
-	console.log(`The selected text was "${range.text}".`);
+		console.log(`The selected text was "${range.text}".`);
+	});
 }
 
 function ShowAlertTest(event) {
