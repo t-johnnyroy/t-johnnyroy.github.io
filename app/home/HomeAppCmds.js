@@ -1238,6 +1238,7 @@ function ChangetoRed(event) {
 }
 
 function ShowAlertTest(event) {
+	console.log("WOWOWOWOWOWOW")
 	var DialogElements = document.querySelectorAll(".ms-Dialog");
 	var DialogComponents = [];
 	for (var i = 0; i < DialogElements.length; i++) {
