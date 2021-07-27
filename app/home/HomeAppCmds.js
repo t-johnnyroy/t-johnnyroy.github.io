@@ -1237,7 +1237,7 @@ function ChangetoRed(event) {
 	event.completed();
 }
 
-function ShowAlert(event) {
+function ShowAlertTest(event) {
 	var DialogElements = document.querySelectorAll(".ms-Dialog");
 	var DialogComponents = [];
 	for (var i = 0; i < DialogElements.length; i++) {
@@ -1248,7 +1248,7 @@ function ShowAlert(event) {
 	// //debugger;
 	// var currentUrl = document.URL;
 	// var dialogPage = currentUrl.substring(0, currentUrl.lastIndexOf("/")) + "/Dialog.html";
-	// Office.context.ui.displayDialogAsync(dialogPage, {height: 30, width: 20, displayInIframe: true});
+	// Office.context.ui.displayDialogAsync(diuncalogPage, {height: 30, width: 20, displayInIframe: true});
 	event.completed();
 }
 
