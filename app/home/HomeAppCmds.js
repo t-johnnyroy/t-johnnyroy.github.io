@@ -1031,8 +1031,20 @@ var j = 100;
 
 
 	function documentSelectionHandler(eventArgs) {
-		Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
-			console.log(asyncResult.value);
+		Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, async function (asyncResult) {
+			if(asyncResult.value !== "") {
+				const parentGroup = {id: "Group1Id12", controls: {id: "Tab1Button1", enabled: Boolean(true)}};
+				const parentTab = {id: "OfficeAppTab1", groups: [parentGroup]};
+				const ribbonUpdater = {tabs: [parentTab]};
+				// @ts-ignore
+				await Office.ribbon.requestUpdate(ribbonUpdater);
+			} else {
+				const parentGroup = {id: "Group1Id12", controls: {id: "Tab1Button1", enabled: Boolean(false)}};
+				const parentTab = {id: "OfficeAppTab1", groups: [parentGroup]};
+				const ribbonUpdater = {tabs: [parentTab]};
+				// @ts-ignore
+				await Office.ribbon.requestUpdate(ribbonUpdater);
+			}
 		});
 	}
 
