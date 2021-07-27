@@ -138,14 +138,6 @@ var j = 100;
 
 			showQueryString();
 
-			Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
-				if (asyncResult.status === "failed") {
-					writeToPage('Error: ' + asyncResult.error.message);
-				} else {
-					writeToPage('Added DocumentSelectionChanged handler');
-				}
-			});
-
 			// $('#ribbonDefinitionId').val(JSON.stringify(dynamic_ribbon_sample_data));
 		});
 	};
@@ -1232,6 +1224,16 @@ function ChangetoRed(event) {
 	});
 
 	event.completed();
+}
+
+function EnableListener(event) {
+	Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
+		if (asyncResult.status === "failed") {
+			writeToPage('Error: ' + asyncResult.error.message);
+		} else {
+			writeToPage('Added DocumentSelectionChanged handler');
+		}
+	});
 }
 
 async function BoldText(event) {
