@@ -1244,6 +1244,7 @@ function ChangetoRed(event) {
 }
 
 async function BoldText(event) {
+	console.log("changing text")
 	await Word.run(async (context) => {
 		const range = context.document.getSelection();
 		range.font.color = "red";
@@ -1252,6 +1253,7 @@ async function BoldText(event) {
 		await context.sync();
 
 		console.log(`The selected text was "${range.text}".`);
+		event.completed();
 	});
 }
 
