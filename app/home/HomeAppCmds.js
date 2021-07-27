@@ -187,7 +187,7 @@ var j = 100;
 
 	function sleep(delay) {
 		var start = new Date().getTime();
-		while (new Date().getTime() < start + delay);
+		while (new Date().getTime() < start + delay) ;
 	}
 
 	function appResult(txt) {
@@ -223,8 +223,7 @@ var j = 100;
 		updateCommandButtonState(false);
 	}
 
-	async function updateCommandButtonState(enabled)
-	{
+	async function updateCommandButtonState(enabled) {
 		var commandButtonIds = document.getElementById('commandButtonID').value.split(';');
 		var commandControls = [];
 
@@ -247,11 +246,11 @@ var j = 100;
 		// 	writeToPage('Error:' + error.toString());
 		// }
 		// if (Office.context.requirements.isSetSupported('RibbonApi', '1.1')) {
-			const parentGroup = { id: "Group1Id12", controls: commandControls };
-			const parentTab = { id: "OfficeAppTab1", groups: [parentGroup] };
-			const ribbonUpdater = { tabs: [parentTab] };
-			// @ts-ignore
-			await Office.ribbon.requestUpdate(ribbonUpdater);
+		const parentGroup = {id: "Group1Id12", controls: commandControls};
+		const parentTab = {id: "OfficeAppTab1", groups: [parentGroup]};
+		const ribbonUpdater = {tabs: [parentTab]};
+		// @ts-ignore
+		await Office.ribbon.requestUpdate(ribbonUpdater);
 		// }
 
 	}
@@ -271,262 +270,267 @@ var j = 100;
 		var data = {tabs: commandtabs};
 		try {
 			Office.ribbon.requestUpdate(data)
-				.then(function(ret2) {})
-				.catch(function (err) { writeToPage('Error:' + JSON.stringify(err))});
-		}
-		catch (error) {
+				.then(function (ret2) {
+				})
+				.catch(function (err) {
+					writeToPage('Error:' + JSON.stringify(err))
+				});
+		} catch (error) {
 			OfficeRuntime.ui.getRibbon().then(function (ret) {
 				var dr = ret;
 				dr.requestUpdate(data)
-					.then(function(ret2) {})
-					.catch(function (err) { writeToPage('Error:' + JSON.stringify(err))});
+					.then(function (ret2) {
+					})
+					.catch(function (err) {
+						writeToPage('Error:' + JSON.stringify(err))
+					});
 			});
 		}
 	}
 
 	var dynamic_ribbon_sample_data =
 		{
-			"actions":[
+			"actions": [
 				{
-					"id":"executeWriteData",
-					"type":"ExecuteFunction",
-					"functionFile":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
-					"functionName":"writeData"
+					"id": "executeWriteData",
+					"type": "ExecuteFunction",
+					"functionFile": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+					"functionName": "writeData"
 				},
 				{
-					"id":"executeWriteformula",
-					"type":"ExecuteFunction",
-					"functionFile":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
-					"functionName":"writeformula"
+					"id": "executeWriteformula",
+					"type": "ExecuteFunction",
+					"functionFile": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+					"functionName": "writeformula"
 				},
 				{
-					"id":"showTaskpanewiki",
-					"type":"ShowTaskpane",
-					"sourceLocation":"https://wikipedia.firstpartyapps.oaspapps.com/wikipedia/wikipedia_dev.html",
-					"taskpaneId":"Taskpane1",
-					"title":"TakspaneTitle",
-					"supportPinning":false
+					"id": "showTaskpanewiki",
+					"type": "ShowTaskpane",
+					"sourceLocation": "https://wikipedia.firstpartyapps.oaspapps.com/wikipedia/wikipedia_dev.html",
+					"taskpaneId": "Taskpane1",
+					"title": "TakspaneTitle",
+					"supportPinning": false
 				},
 				{
-					"id":"showTaskpaneResCFSample",
-					"type":"ShowTaskpane",
-					"sourceLocation":"https://officedev.github.io/custom-functions/addins/cfsample2/sharedapp.html",
-					"taskpaneId":"Taskpane1",
-					"title":"TakspaneTitle",
-					"supportPinning":false
+					"id": "showTaskpaneResCFSample",
+					"type": "ShowTaskpane",
+					"sourceLocation": "https://officedev.github.io/custom-functions/addins/cfsample2/sharedapp.html",
+					"taskpaneId": "Taskpane1",
+					"title": "TakspaneTitle",
+					"supportPinning": false
 				},
 				{
-					"id":"showTaskpaneResAppCmds",
-					"type":"ShowTaskpane",
-					"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
-					"taskpaneId":"Taskpane1",
-					"title":"TakspaneTitle",
-					"supportPinning":false
+					"id": "showTaskpaneResAppCmds",
+					"type": "ShowTaskpane",
+					"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+					"taskpaneId": "Taskpane1",
+					"title": "TakspaneTitle",
+					"supportPinning": false
 				}
 			],
-			"tabs":[
+			"tabs": [
 				{
-					"id":"CtxTab1",
-					"label":"CtxTab1",
-					"visible":false,
-					"groups":[
+					"id": "CtxTab1",
+					"label": "CtxTab1",
+					"visible": false,
+					"groups": [
 						{
-							"id":"CustomGroup111",
-							"label":"Group11Title",
-							"icon":[
+							"id": "CustomGroup111",
+							"label": "Group11Title",
+							"icon": [
 								{
-									"size":16,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 16,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":32,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 32,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":80,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 80,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								}
 							],
-							"controls":[
+							"controls": [
 								{
-									"type":"Button",
-									"id":"CtxBt111",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt111",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"STP_CtxBt111",
-									"toolTip":"Btn111ToolTip",
-									"superTip":{
-										"title":"Btn111SupertTipeTitle",
-										"description":"Btn111SuperTipDesc"
+									"label": "STP_CtxBt111",
+									"toolTip": "Btn111ToolTip",
+									"superTip": {
+										"title": "Btn111SupertTipeTitle",
+										"description": "Btn111SuperTipDesc"
 									},
-									"actionId":"showTaskpaneResAppCmds"
+									"actionId": "showTaskpaneResAppCmds"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt112",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt112",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"ExeFunc_CtxBt112",
-									"toolTip":"Btn112ToolTip",
-									"superTip":{
-										"title":"Btn112SupertTipeTitle",
-										"description":"Btn112SuperTipDesc"
+									"label": "ExeFunc_CtxBt112",
+									"toolTip": "Btn112ToolTip",
+									"superTip": {
+										"title": "Btn112SupertTipeTitle",
+										"description": "Btn112SuperTipDesc"
 									},
-									"actionId":"executeWriteData"
+									"actionId": "executeWriteData"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt113",
-									"enabled":false,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt113",
+									"enabled": false,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"STP_CtxBt113",
-									"toolTip":"STP_CtxBt113",
-									"superTip":{
-										"title":"Btn111SupertTipeTitle",
-										"description":"Btn111SuperTipDesc"
+									"label": "STP_CtxBt113",
+									"toolTip": "STP_CtxBt113",
+									"superTip": {
+										"title": "Btn111SupertTipeTitle",
+										"description": "Btn111SuperTipDesc"
 									},
-									"actionId":"showTaskpanewiki"
+									"actionId": "showTaskpanewiki"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt114",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt114",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"ExeFunc_CtxBt114",
-									"toolTip":"Btn114ToolTip",
-									"superTip":{
-										"title":"Btn114SupertTipeTitle",
-										"description":"Btn114SuperTipDesc"
+									"label": "ExeFunc_CtxBt114",
+									"toolTip": "Btn114ToolTip",
+									"superTip": {
+										"title": "Btn114SupertTipeTitle",
+										"description": "Btn114SuperTipDesc"
 									},
-									"actionId":"executeWriteData"
+									"actionId": "executeWriteData"
 								},
 								{
-									"type":"Menu",
-									"id":"CustomRibbonTab1Menu1",
-									"label":"Menu111Label",
-									"toolTip":"Btn112ToolTip",
-									"superTip":{
-										"title":"Btn112SupertTipeTitle",
-										"description":"Btn112SuperTipDesc"
+									"type": "Menu",
+									"id": "CustomRibbonTab1Menu1",
+									"label": "Menu111Label",
+									"toolTip": "Btn112ToolTip",
+									"superTip": {
+										"title": "Btn112SupertTipeTitle",
+										"description": "Btn112SuperTipDesc"
 									},
-									"icon":[
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"items":[
+									"items": [
 										{
-											"type":"MenuItem",
-											"id":"CtxMi111",
-											"enabled":true,
-											"icon":[
+											"type": "MenuItem",
+											"id": "CtxMi111",
+											"enabled": true,
+											"icon": [
 												{
-													"size":16,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 16,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":32,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 32,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":80,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 80,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												}
 											],
-											"label":"STP_CtxMi111",
-											"toolTip":"Btn111ToolTip",
-											"superTip":{
-												"title":"Btn111SupertTipeTitle",
-												"description":"Btn111SuperTipDesc"
+											"label": "STP_CtxMi111",
+											"toolTip": "Btn111ToolTip",
+											"superTip": {
+												"title": "Btn111SupertTipeTitle",
+												"description": "Btn111SuperTipDesc"
 											},
-											"actionId":"showTaskpanewiki"
+											"actionId": "showTaskpanewiki"
 										},
 										{
-											"type":"MenuItem",
-											"id":"CtxMi112",
-											"enabled":false,
-											"icon":[
+											"type": "MenuItem",
+											"id": "CtxMi112",
+											"enabled": false,
+											"icon": [
 												{
-													"size":16,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 16,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":32,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 32,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":80,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 80,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												}
 											],
-											"label":"ExeFunc_CtxMi112",
-											"toolTip":"Btn111ToolTip",
-											"superTip":{
-												"title":"Btn111SupertTipeTitle",
-												"description":"Btn111SuperTipDesc"
+											"label": "ExeFunc_CtxMi112",
+											"toolTip": "Btn111ToolTip",
+											"superTip": {
+												"title": "Btn111SupertTipeTitle",
+												"description": "Btn111SuperTipDesc"
 											},
-											"actionId":"executeWriteformula"
+											"actionId": "executeWriteformula"
 										}
 									]
 								}
@@ -535,79 +539,79 @@ var j = 100;
 					]
 				},
 				{
-					"id":"CtxTab2",
-					"label":"CtxTab2",
-					"visible":true,
-					"groups":[
+					"id": "CtxTab2",
+					"label": "CtxTab2",
+					"visible": true,
+					"groups": [
 						{
-							"id":"CustomGroup211",
-							"label":"Group211Title",
-							"icon":[
+							"id": "CustomGroup211",
+							"label": "Group211Title",
+							"icon": [
 								{
-									"size":16,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 16,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":32,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 32,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":80,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 80,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								}
 							],
-							"controls":[
+							"controls": [
 								{
-									"type":"Button",
-									"id":"CtxBt211",
-									"enabled":false,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt211",
+									"enabled": false,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"STP_CtxBt211",
-									"toolTip":"Btn211ToolTip",
-									"superTip":{
-										"title":"Btn211SuperTipTitle",
-										"description":"Btn211SuperTipDesc"
+									"label": "STP_CtxBt211",
+									"toolTip": "Btn211ToolTip",
+									"superTip": {
+										"title": "Btn211SuperTipTitle",
+										"description": "Btn211SuperTipDesc"
 									},
-									"actionId":"showTaskpaneResCFSample"
+									"actionId": "showTaskpaneResCFSample"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt212",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt212",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"ExeFunc_CtxBt212",
-									"toolTip":"Btn212ToolTip",
-									"superTip":{
-										"title":"Btn212SuperTipTitle",
-										"description":"Btn212SuperTipDesc"
+									"label": "ExeFunc_CtxBt212",
+									"toolTip": "Btn212ToolTip",
+									"superTip": {
+										"title": "Btn212SuperTipTitle",
+										"description": "Btn212SuperTipDesc"
 									},
-									"actionId":"executeWriteformula"
+									"actionId": "executeWriteformula"
 								}
 							]
 						}
@@ -618,38 +622,40 @@ var j = 100;
 
 	function generateRibbonButton() {
 		var ribbonTabDefinition = document.getElementById('ribbonDefinitionId').value;
-		if (!ribbonTabDefinition || ribbonTabDefinition === "")	{
+		if (!ribbonTabDefinition || ribbonTabDefinition === "") {
 			ribbonTabDefinition = JSON.stringify(dynamic_ribbon_sample_data);
 		}
 
 		Office.ribbon.requestCreateControls(JSON.parse(ribbonTabDefinition))
-			.then(function(ret2) {})
-			.catch(function (err) { writeToPage('Error:' + JSON.stringify(err))});
+			.then(function (ret2) {
+			})
+			.catch(function (err) {
+				writeToPage('Error:' + JSON.stringify(err))
+			});
 	}
 
 	function generateRandomRibbonDefinition() {
 
-		var getRandomInt = function(max) {
+		var getRandomInt = function (max) {
 			return Math.floor(Math.random() * Math.floor(max));
 		};
 
 		//Generate a single tab
-		var generateTab = function(id){
+		var generateTab = function (id) {
 			var newTab = '{"id":"AddinTab${id}","title":"Addin Tab ${id}","isOfficeTab":false,"visible":true,"groups":[{"id":"AddinControl${id}${id}","title":"TestOffice","controls":[{"id":"AddinControl${id}Button1","title":"Tab${id}Button1","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_1.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button2","title":"Tab${id}Button2","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_2.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button3","title":"Tab${id}Button3","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_3.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button4","title":"Tab${id}Button4","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_4.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button5","title":"Tab${id}Button5","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_5.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button6","title":"Tab${id}Button6","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_6.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button7","title":"Tab${id}Button7","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_7.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button8","title":"Tab${id}Button8","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_8.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button9","title":"Tab${id}Button9","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_9.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button10","title":"Tab${id}Button10","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_10.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button11","title":"Tab${id}Button11","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_11.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button12","title":"Tab${id}Button12","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_12.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button13","title":"Tab${id}Button13","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_13.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button14","title":"Tab${id}Button14","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_14.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button15","title":"Tab${id}Button15","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_15.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button16","title":"Tab${id}Button16","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_16.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button17","title":"Tab${id}Button17","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_17.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button18","title":"Tab${id}Button18","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_18.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button19","title":"Tab${id}Button19","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_19.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}},{"id":"AddinControl${id}Button20","title":"Tab${id}Button20","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icons/icon32_20.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}}]}]}';
 			return newTab;
 		};
 
-		var generateTabs = function(count){
+		var generateTabs = function (count) {
 			var tabs = "";
-			for (var i = 0; i < count; ++i)
-			{
+			for (var i = 0; i < count; ++i) {
 				tabs += ',';
 				tabs += generateTab(i);
 			}
 			return tabs;
 		};
 
-		var generateTabDefinition = function(count) {
+		var generateTabDefinition = function (count) {
 			var generatedTabs = generateTabs(count);
 			var tabDefinition = '[{"id":"TabHome","title":null,"isOfficeTab":true,"visible":true,"groups":[{"id":"AddinControlHome","title":"Addin Tab Home","controls":[{"id":"AddinControlHome1","title":"STP_Shared_TabHomeButton1","iconLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png","enabled":true,"controlType":0,"attributes":{"Command":1402209562}}]}]}${generatedTabs}]'
 			return tabDefinition;
@@ -676,8 +682,7 @@ var j = 100;
 				var firstSelectedCellValue = range.values[0][0];
 
 				var ribbonTabId = document.getElementById('ribbonTabId').value;
-				if (firstSelectedCellValue === "true")
-				{
+				if (firstSelectedCellValue === "true") {
 					OfficeRuntime.ui.getRibbon().then(function (ret) {
 						var dr = ret;
 						var btn = {};
@@ -685,9 +690,7 @@ var j = 100;
 						var data = {tabs: [tab]};
 						dr.requestUpdate(data);
 					});
-				}
-				else if (firstSelectedCellValue === "false")
-				{
+				} else if (firstSelectedCellValue === "false") {
 					OfficeRuntime.ui.getRibbon().then(function (ret) {
 						var dr = ret;
 						var btn = {};
@@ -720,7 +723,7 @@ var j = 100;
 			} else {
 				Office.context.document.bindings.addFromSelectionAsync(
 					Office.BindingType.Matrix,
-					{ id : bindingName},
+					{id: bindingName},
 					function (asyncResult) {
 						if (asyncResult.status === "failed") {
 							writeToPage('Error: ' + asyncResult.error.message);
@@ -733,7 +736,6 @@ var j = 100;
 			}
 		});
 	}
-
 
 
 	function readData() {
@@ -751,7 +753,7 @@ var j = 100;
 		var bindingName = document.getElementById('bindingName').value;
 
 		Office.context.document.bindings.addFromSelectionAsync(Office.BindingType.Matrix, {
-				id : bindingName
+				id: bindingName
 			},
 
 			//addFromPromptAsync
@@ -790,7 +792,7 @@ var j = 100;
 	function readBoundData() {
 		var bindingName = "bindings#" + document.getElementById('bindingName').value;
 		Office.select(bindingName).getDataAsync({
-				coercionType : Office.BindingType.Matrix
+				coercionType: Office.BindingType.Matrix
 			},
 			function (asyncResult) {
 				if (asyncResult.status === "failed") {
@@ -804,7 +806,7 @@ var j = 100;
 	function setBoundData() {
 		var bindingName = "bindings#" + document.getElementById('bindingName').value;
 		Office.select(bindingName).setDataAsync([['Berlin'], ['Munich'], ['Duisburg']], {
-				coercionType : "matrix"
+				coercionType: "matrix"
 			},
 			function (asyncResult) {
 				if (asyncResult.status === "failed") {
@@ -881,6 +883,7 @@ var j = 100;
 			}
 		});
 	}
+
 	function colorDiv(coloroption) {
 		//    div.style.backgroundColor = 'green';
 		var color;
@@ -1014,9 +1017,9 @@ var j = 100;
 	function goToNextSlide() {
 
 		var data = "100";
-		$.get("http://jackychenaddin.azurewebsites.net/AddInService.svc/GetData", function(response) {
+		$.get("http://jackychenaddin.azurewebsites.net/AddInService.svc/GetData", function (response) {
 			data = response;
-		}).error(function() {
+		}).error(function () {
 			writeToPage('go To Next Slide Error');
 		});
 
@@ -1057,7 +1060,7 @@ var j = 100;
 
 
 	function myHandler2(eventArgs) {
-		var commandTaab1ButtonIDs = ["Tab1Button1","Tab1Button2", "Tab1Button3", "Tab1Button4", "Tab1Button5", "Tab1Button6", "Tab1Menu1Item1", "Tab1Menu1Item2"];
+		var commandTaab1ButtonIDs = ["Tab1Button1", "Tab1Button2", "Tab1Button3", "Tab1Button4", "Tab1Button5", "Tab1Button6", "Tab1Menu1Item1", "Tab1Menu1Item2"];
 		var commandTaab2ButtonIDs = ["Tab2Button1"];
 		var customTabIds = ["OfficeAppTab1", "OfficeAppTab2"];
 
@@ -1084,15 +1087,17 @@ var j = 100;
 
 		var data = {tabs: commandtabs};
 		Office.ribbon.requestUpdate(data)
-			.then(function(ret2) {})
-			.catch(function (err) { writeToPage('Error:' + JSON.stringify(err))});
+			.then(function (ret2) {
+			})
+			.catch(function (err) {
+				writeToPage('Error:' + JSON.stringify(err))
+			});
 	}
-
 
 
 	function myHandler(eventArgs) {
 		eventArgs.binding.getDataAsync({
-			coerciontype : "matrix"
+			coerciontype: "matrix"
 		}, function (asyncResult) {
 
 			if (asyncResult.status === "failed") {
@@ -1106,11 +1111,11 @@ var j = 100;
 	//Trigger on selection change, get partial data from the matrix
 	function onBindingSelectionChanged(eventArgs) {
 		eventArgs.binding.getDataAsync({
-				CoercionType : Office.CoercionType.Matrix,
-				startRow : eventArgs.startRow,
-				startColumn : 0,
-				rowCount : 1,
-				columnCount : 1
+				CoercionType: Office.CoercionType.Matrix,
+				startRow: eventArgs.startRow,
+				startColumn: 0,
+				rowCount: 1,
+				columnCount: 1
 			},
 			function (asyncResult) {
 				if (asyncResult.status == "failed") {
@@ -1127,7 +1132,7 @@ var j = 100;
 			if (asyncResult.status === "failed") {
 				writeToPage('Error: ' + asyncResult.error.message);
 			} else {
-				writeToPage(bindingName +' released.');
+				writeToPage(bindingName + ' released.');
 			}
 		});
 	}
@@ -1137,7 +1142,7 @@ var j = 100;
 		// text = elmResults.innerHTML + text;
 		// elmResults.innerHTML = text;
 		// elmResults.appendChild(document.createElement("br"));
-		console.log(text)
+		// console.log(text)
 	}
 
 })();
@@ -1152,9 +1157,10 @@ function writeData(event) {
 	Office.context.document.setSelectedDataAsync("Start sleeping...", function (asyncResult) {
 		if (asyncResult.status !== "failed") {
 			var start = new Date().getTime();
-			while (new Date().getTime() < start + 10000);
+			while (new Date().getTime() < start + 10000) ;
 
-			Office.context.document.setSelectedDataAsync("Changing control state by Ui-less.");				}
+			Office.context.document.setSelectedDataAsync("Changing control state by Ui-less.");
+		}
 	});
 
 
@@ -1222,7 +1228,6 @@ function writeformula() {
 }
 
 
-
 function ChangetoRed(event) {
 	Office.context.document.settings.set("backgroundColor", "6");
 	//Save a setting in the document to make it available in future sessions
@@ -1236,6 +1241,16 @@ function ChangetoRed(event) {
 	});
 
 	event.completed();
+}
+
+async function BoldText(event) {
+	const range = context.document.getSelection();
+	range.font.color = "red";
+	range.load("text");
+
+	await context.sync();
+
+	console.log(`The selected text was "${range.text}".`);
 }
 
 function ShowAlertTest(event) {
@@ -1257,7 +1272,7 @@ function ShowAlertTest(event) {
 function ChangeBindingData(event) {
 	var bindingName = "bindings#" + document.getElementById('bindingName').value;
 	Office.select(bindingName).setDataAsync([['Berlin'], ['Munich'], ['Duisburg']], {
-			coercionType : "matrix"
+			coercionType: "matrix"
 		},
 		function (asyncResult) {
 			if (asyncResult.status === "failed") {
@@ -1273,221 +1288,221 @@ function ChangeBindingData(event) {
 function createContextualTab(event) {
 	var dynamic_ribbon_sample_data =
 		{
-			"actions":[
+			"actions": [
 				{
-					"id":"executeWriteData",
-					"type":"ExecuteFunction",
-					"functionFile":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
-					"functionName":"writeData"
+					"id": "executeWriteData",
+					"type": "ExecuteFunction",
+					"functionFile": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+					"functionName": "writeData"
 				},
 				{
-					"id":"executeWriteformula",
-					"type":"ExecuteFunction",
-					"functionFile":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
-					"functionName":"writeformula"
+					"id": "executeWriteformula",
+					"type": "ExecuteFunction",
+					"functionFile": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+					"functionName": "writeformula"
 				},
 				{
-					"id":"showTaskpanewiki",
-					"type":"ShowTaskpane",
-					"sourceLocation":"https://wikipedia.firstpartyapps.oaspapps.com/wikipedia/wikipedia_dev.html",
-					"taskpaneId":"Taskpane1",
-					"title":"TakspaneTitle",
-					"supportPinning":false
+					"id": "showTaskpanewiki",
+					"type": "ShowTaskpane",
+					"sourceLocation": "https://wikipedia.firstpartyapps.oaspapps.com/wikipedia/wikipedia_dev.html",
+					"taskpaneId": "Taskpane1",
+					"title": "TakspaneTitle",
+					"supportPinning": false
 				},
 				{
-					"id":"showTaskpaneResCFSample",
-					"type":"ShowTaskpane",
-					"sourceLocation":"https://officedev.github.io/custom-functions/addins/cfsample2/sharedapp.html",
-					"taskpaneId":"Taskpane1",
-					"title":"TakspaneTitle",
-					"supportPinning":false
+					"id": "showTaskpaneResCFSample",
+					"type": "ShowTaskpane",
+					"sourceLocation": "https://officedev.github.io/custom-functions/addins/cfsample2/sharedapp.html",
+					"taskpaneId": "Taskpane1",
+					"title": "TakspaneTitle",
+					"supportPinning": false
 				},
 				{
-					"id":"showTaskpaneResAppCmds",
-					"type":"ShowTaskpane",
-					"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
-					"taskpaneId":"Taskpane1",
-					"title":"TakspaneTitle",
-					"supportPinning":false
+					"id": "showTaskpaneResAppCmds",
+					"type": "ShowTaskpane",
+					"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/HomeAppCmds.html",
+					"taskpaneId": "Taskpane1",
+					"title": "TakspaneTitle",
+					"supportPinning": false
 				}
 			],
-			"tabs":[
+			"tabs": [
 				{
-					"id":"CtxTab1",
-					"label":"CtxTab1",
-					"visible":true,
-					"groups":[
+					"id": "CtxTab1",
+					"label": "CtxTab1",
+					"visible": true,
+					"groups": [
 						{
-							"id":"CustomGroup111",
-							"label":"Group11Title",
-							"icon":[
+							"id": "CustomGroup111",
+							"label": "Group11Title",
+							"icon": [
 								{
-									"size":16,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 16,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":32,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 32,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":80,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 80,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								}
 							],
-							"controls":[
+							"controls": [
 								{
-									"type":"Button",
-									"id":"CtxBt111",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt111",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"STP_CtxBt111",
-									"toolTip":"Btn111ToolTip",
-									"superTip":{
-										"title":"Btn111SupertTipeTitle",
-										"description":"Btn111SuperTipDesc"
+									"label": "STP_CtxBt111",
+									"toolTip": "Btn111ToolTip",
+									"superTip": {
+										"title": "Btn111SupertTipeTitle",
+										"description": "Btn111SuperTipDesc"
 									},
-									"actionId":"showTaskpaneResAppCmds"
+									"actionId": "showTaskpaneResAppCmds"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt112",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt112",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"ExeFunc_CtxBt112",
-									"toolTip":"Btn112ToolTip",
-									"superTip":{
-										"title":"Btn112SupertTipeTitle",
-										"description":"Btn112SuperTipDesc"
+									"label": "ExeFunc_CtxBt112",
+									"toolTip": "Btn112ToolTip",
+									"superTip": {
+										"title": "Btn112SupertTipeTitle",
+										"description": "Btn112SuperTipDesc"
 									},
-									"actionId":"executeWriteData"
+									"actionId": "executeWriteData"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt113",
-									"enabled":false,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt113",
+									"enabled": false,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"STP_CtxBt113",
-									"toolTip":"STP_CtxBt113",
-									"superTip":{
-										"title":"Btn111SupertTipeTitle",
-										"description":"Btn111SuperTipDesc"
+									"label": "STP_CtxBt113",
+									"toolTip": "STP_CtxBt113",
+									"superTip": {
+										"title": "Btn111SupertTipeTitle",
+										"description": "Btn111SuperTipDesc"
 									},
-									"actionId":"showTaskpanewiki"
+									"actionId": "showTaskpanewiki"
 								},
 								{
-									"type":"Menu",
-									"id":"CustomRibbonTab1Menu1",
-									"label":"Menu111Label",
-									"toolTip":"Btn112ToolTip",
-									"superTip":{
-										"title":"Btn112SupertTipeTitle",
-										"description":"Btn112SuperTipDesc"
+									"type": "Menu",
+									"id": "CustomRibbonTab1Menu1",
+									"label": "Menu111Label",
+									"toolTip": "Btn112ToolTip",
+									"superTip": {
+										"title": "Btn112SupertTipeTitle",
+										"description": "Btn112SuperTipDesc"
 									},
-									"icon":[
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"items":[
+									"items": [
 										{
-											"type":"MenuItem",
-											"id":"CtxMi111",
-											"enabled":true,
-											"icon":[
+											"type": "MenuItem",
+											"id": "CtxMi111",
+											"enabled": true,
+											"icon": [
 												{
-													"size":16,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 16,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":32,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 32,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":80,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 80,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												}
 											],
-											"label":"STP_CtxMi111",
-											"toolTip":"Btn111ToolTip",
-											"superTip":{
-												"title":"Btn111SupertTipeTitle",
-												"description":"Btn111SuperTipDesc"
+											"label": "STP_CtxMi111",
+											"toolTip": "Btn111ToolTip",
+											"superTip": {
+												"title": "Btn111SupertTipeTitle",
+												"description": "Btn111SuperTipDesc"
 											},
-											"actionId":"showTaskpanewiki"
+											"actionId": "showTaskpanewiki"
 										},
 										{
-											"type":"MenuItem",
-											"id":"CtxMi112",
-											"enabled":false,
-											"icon":[
+											"type": "MenuItem",
+											"id": "CtxMi112",
+											"enabled": false,
+											"icon": [
 												{
-													"size":16,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 16,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":32,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 32,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												},
 												{
-													"size":80,
-													"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+													"size": 80,
+													"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 												}
 											],
-											"label":"ExeFunc_CtxMi112",
-											"toolTip":"Btn111ToolTip",
-											"superTip":{
-												"title":"Btn111SupertTipeTitle",
-												"description":"Btn111SuperTipDesc"
+											"label": "ExeFunc_CtxMi112",
+											"toolTip": "Btn111ToolTip",
+											"superTip": {
+												"title": "Btn111SupertTipeTitle",
+												"description": "Btn111SuperTipDesc"
 											},
-											"actionId":"executeWriteformula"
+											"actionId": "executeWriteformula"
 										}
 									]
 								}
@@ -1496,79 +1511,79 @@ function createContextualTab(event) {
 					]
 				},
 				{
-					"id":"CtxTab2",
-					"label":"CtxTab2",
-					"visible":true,
-					"groups":[
+					"id": "CtxTab2",
+					"label": "CtxTab2",
+					"visible": true,
+					"groups": [
 						{
-							"id":"CustomGroup211",
-							"label":"Group211Title",
-							"icon":[
+							"id": "CustomGroup211",
+							"label": "Group211Title",
+							"icon": [
 								{
-									"size":16,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 16,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":32,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 32,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								},
 								{
-									"size":80,
-									"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+									"size": 80,
+									"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 								}
 							],
-							"controls":[
+							"controls": [
 								{
-									"type":"Button",
-									"id":"CtxBt211",
-									"enabled":false,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt211",
+									"enabled": false,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"STP_CtxBt211",
-									"toolTip":"Btn211ToolTip",
-									"superTip":{
-										"title":"Btn211SuperTipTitle",
-										"description":"Btn211SuperTipDesc"
+									"label": "STP_CtxBt211",
+									"toolTip": "Btn211ToolTip",
+									"superTip": {
+										"title": "Btn211SuperTipTitle",
+										"description": "Btn211SuperTipDesc"
 									},
-									"actionId":"showTaskpaneResCFSample"
+									"actionId": "showTaskpaneResCFSample"
 								},
 								{
-									"type":"Button",
-									"id":"CtxBt212",
-									"enabled":true,
-									"icon":[
+									"type": "Button",
+									"id": "CtxBt212",
+									"enabled": true,
+									"icon": [
 										{
-											"size":16,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 16,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":32,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 32,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										},
 										{
-											"size":80,
-											"sourceLocation":"https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
+											"size": 80,
+											"sourceLocation": "https://jackychen.azurewebsites.net/agaves/testapps/app/home/icon32.png"
 										}
 									],
-									"label":"ExeFunc_CtxBt212",
-									"toolTip":"Btn212ToolTip",
-									"superTip":{
-										"title":"Btn212SuperTipTitle",
-										"description":"Btn212SuperTipDesc"
+									"label": "ExeFunc_CtxBt212",
+									"toolTip": "Btn212ToolTip",
+									"superTip": {
+										"title": "Btn212SuperTipTitle",
+										"description": "Btn212SuperTipDesc"
 									},
-									"actionId":"executeWriteformula"
+									"actionId": "executeWriteformula"
 								}
 							]
 						}
@@ -1578,13 +1593,23 @@ function createContextualTab(event) {
 		};
 //	debugger;
 	Office.ribbon.requestCreateControls(dynamic_ribbon_sample_data)
-		.then(function(ret2) {
+		.then(function (ret2) {
 			console.log("Contextal Tabs created.");
 			Office.context.document.setSelectedDataAsync("Contextal Tabs created.")
-			var data = {"tabs":[{"id":"CtxTab1","visible":true,"controls":[{}]},{"id":"CtxTab2","visible":true,"controls":[{}]}]};
+			var data = {
+				"tabs": [{"id": "CtxTab1", "visible": true, "controls": [{}]}, {
+					"id": "CtxTab2",
+					"visible": true,
+					"controls": [{}]
+				}]
+			};
 			Office.ribbon.requestUpdate(data)
-				.then(function(ret3) { console.log("Contextal Tabs set visible."); })
-				.catch(function (err2) { console.log('Error:' + JSON.stringify(err2))});
+				.then(function (ret3) {
+					console.log("Contextal Tabs set visible.");
+				})
+				.catch(function (err2) {
+					console.log('Error:' + JSON.stringify(err2))
+				});
 		})
 		.catch(function (err) {
 			console.log('Error:' + JSON.stringify(err));
@@ -1608,7 +1633,7 @@ function myHandler(eventArgs) {
 function bindSelectedData(event) {
 	//addFromSelectionAsync
 	Office.context.document.bindings.addFromSelectionAsync(Office.BindingType.Matrix, {
-			id : 'myBinding'
+			id: 'myBinding'
 		},
 
 		//addFromPromptAsync
