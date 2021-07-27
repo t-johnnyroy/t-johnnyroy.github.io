@@ -1031,27 +1031,9 @@ var j = 100;
 
 
 	function documentSelectionHandler(eventArgs) {
-		console.log("HELLO")
-		// Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
-		// 	if (asyncResult.status != "succeeded") {
-		// 		return;
-		// 	}
-		//
-		// 	var rows = asyncResult.value.split(/\r?\n/);
-		// 	var columnValues = rows[0].split("	");
-		// 	var ribbonTabId = columnValues[0];
-		// 	var isVisible = (columnValues[1] == "true");
-		//
-		// 	OfficeRuntime.ui.getRibbon().then(function (ret) {
-		// 		var dr = ret;
-		// 		var btn = {};
-		// 		var tab = {id: ribbonTabId, visible: isVisible, controls: [btn]};
-		// 		var data = {tabs: [tab]};
-		// 		dr.requestUpdate(data);
-		// 	});
-		//
-		// 	writeToPage("DocumentSelectionChanged: " + asyncResult.value);
-		// });
+		Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+			console.log(asyncResult.value);
+		});
 	}
 
 
