@@ -1133,10 +1133,11 @@ var j = 100;
 	}
 
 	function writeToPage(text) {
-		var elmResults =  document.getElementById('results');
-		text = elmResults.innerHTML + text;
-		elmResults.innerHTML = text;
-		elmResults.appendChild(document.createElement("br"));
+		// var elmResults =  document.getElementById('results');
+		// text = elmResults.innerHTML + text;
+		// elmResults.innerHTML = text;
+		// elmResults.appendChild(document.createElement("br"));
+		console.log(text)
 	}
 
 })();
