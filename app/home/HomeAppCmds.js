@@ -1244,11 +1244,11 @@ function ChangetoRed(event) {
 }
 
 async function BoldText(event) {
-	const range = context.document.getSelection();
+	const range = Office.context.document.getSelection();
 	range.font.color = "red";
 	range.load("text");
 
-	await context.sync();
+	await Office.context.sync();
 
 	console.log(`The selected text was "${range.text}".`);
 }
