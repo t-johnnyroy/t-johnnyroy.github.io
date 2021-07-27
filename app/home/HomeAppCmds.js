@@ -1244,7 +1244,7 @@ function ChangetoRed(event) {
 }
 
 async function BoldText(event) {
-	const range = Word.document.getSelection();
+	const range = Word.context.document.getSelection();
 	range.font.color = "red";
 	range.load("text");
 
