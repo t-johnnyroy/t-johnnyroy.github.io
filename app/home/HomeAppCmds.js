@@ -1034,13 +1034,13 @@ var j = 100;
 		Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, async function (asyncResult) {
 			console.log("--" + asyncResult.value !== "" + "--", asyncResult.value !== "")
 			if(asyncResult.value !== "") {
-				const parentGroup = {id: "Group1Id12", controls: {id: "Tab1Button1", enabled: Boolean(true)}};
+				const parentGroup = {id: "Group1Id12", controls: [{id: "Tab1Button1", enabled: Boolean(true)}]};
 				const parentTab = {id: "OfficeAppTab1", groups: [parentGroup]};
 				const ribbonUpdater = {tabs: [parentTab]};
 				// @ts-ignore
 				await Office.ribbon.requestUpdate(ribbonUpdater);
 			} else {
-				const parentGroup = {id: "Group1Id12", controls: {id: "Tab1Button1", enabled: Boolean(false)}};
+				const parentGroup = {id: "Group1Id12", controls: [{id: "Tab1Button1", enabled: Boolean(false)}]};
 				const parentTab = {id: "OfficeAppTab1", groups: [parentGroup]};
 				const ribbonUpdater = {tabs: [parentTab]};
 				// @ts-ignore
