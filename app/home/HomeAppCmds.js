@@ -5,6 +5,14 @@ var k = 0;
 var j = 100;
 (function () {
 	"use strict";
+	console.log("hooking")
+	Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
+		if (asyncResult.status === "failed") {
+			writeToPage('Error: ' + asyncResult.error.message);
+		} else {
+			writeToPage('Added DocumentSelectionChanged handler');
+		}
+	});
 
 	// The initialize function must be run each time a new page is loaded.
 	Office.initialize = function (reason) {
@@ -106,9 +114,6 @@ var j = 100;
 				removeBSltChgEventBtn();
 			});
 
-			$("#addDocSltChgEventBtn").click(function (event) {
-				addDocSltChgEventBtn();
-			});
 			$("#removeDocSltChgEventBtn").click(function (event) {
 				removeDocSltChgEventBtn();
 			});
@@ -992,17 +997,6 @@ var j = 100;
 
 	}
 
-	function addDocSltChgEventBtn() {
-		Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
-			if (asyncResult.status === "failed") {
-				writeToPage('Error: ' + asyncResult.error.message);
-			} else {
-				writeToPage('Added DocumentSelectionChanged handler');
-			}
-		});
-
-	}
-
 	function removeDocSltChgEventBtn() {
 		Office.context.document.removeHandlerAsync(Office.EventType.DocumentSelectionChanged, function (asyncResult) {
 			if (asyncResult.status === "failed") {
@@ -1036,26 +1030,27 @@ var j = 100;
 
 
 	function documentSelectionHandler(eventArgs) {
-		Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
-			if (asyncResult.status != "succeeded") {
-				return;
-			}
-
-			var rows = asyncResult.value.split(/\r?\n/);
-			var columnValues = rows[0].split("	");
-			var ribbonTabId = columnValues[0];
-			var isVisible = (columnValues[1] == "true");
-
-			OfficeRuntime.ui.getRibbon().then(function (ret) {
-				var dr = ret;
-				var btn = {};
-				var tab = {id: ribbonTabId, visible: isVisible, controls: [btn]};
-				var data = {tabs: [tab]};
-				dr.requestUpdate(data);
-			});
-
-			writeToPage("DocumentSelectionChanged: " + asyncResult.value);
-		});
+		console.log("HELLO")
+		// Office.context.document.getSelectedDataAsync(Office.CoercionType.Text, function (asyncResult) {
+		// 	if (asyncResult.status != "succeeded") {
+		// 		return;
+		// 	}
+		//
+		// 	var rows = asyncResult.value.split(/\r?\n/);
+		// 	var columnValues = rows[0].split("	");
+		// 	var ribbonTabId = columnValues[0];
+		// 	var isVisible = (columnValues[1] == "true");
+		//
+		// 	OfficeRuntime.ui.getRibbon().then(function (ret) {
+		// 		var dr = ret;
+		// 		var btn = {};
+		// 		var tab = {id: ribbonTabId, visible: isVisible, controls: [btn]};
+		// 		var data = {tabs: [tab]};
+		// 		dr.requestUpdate(data);
+		// 	});
+		//
+		// 	writeToPage("DocumentSelectionChanged: " + asyncResult.value);
+		// });
 	}
 
 
