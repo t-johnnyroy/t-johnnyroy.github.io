@@ -1229,9 +1229,9 @@ function writeformula() {
 
 
 function ChangetoRed(event) {
-	Word.context.document.settings.set("backgroundColor", "6");
+	Office.context.document.settings.set("backgroundColor", "6");
 	//Save a setting in the document to make it available in future sessions
-	Word.context.document.settings.saveAsync(function (asyncResult) {
+	Office.context.document.settings.saveAsync(function (asyncResult) {
 		if (asyncResult.status == "failed") {
 			// writeToPage("Action failed with error: " + asyncResult.error.message);
 		} else {
@@ -1244,11 +1244,11 @@ function ChangetoRed(event) {
 }
 
 async function BoldText(event) {
-	const range = Office.context.document.getSelection();
+	const range = Word.document.getSelection();
 	range.font.color = "red";
 	range.load("text");
 
-	await Office.context.sync();
+	await Word.context.sync();
 
 	console.log(`The selected text was "${range.text}".`);
 }
