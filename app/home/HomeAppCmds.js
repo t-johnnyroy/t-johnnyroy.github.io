@@ -1250,7 +1250,7 @@ function ShowAlertTest(event) {
 	// //debugger;
 	var currentUrl = document.URL;
 	var dialogPage = "https://www2.latech.edu/~acm/HelloWorld.shtml";
-	Office.context.ui.displayDialogAsync(dialogPage, {height: 30, width: 20, displayInIframe: true});
+	Office.context.ui.displayDialogAsync(dialogPage, {displayInIframe: true});
 	event.completed();
 }
 
