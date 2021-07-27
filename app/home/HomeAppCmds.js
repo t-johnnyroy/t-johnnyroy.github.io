@@ -6,13 +6,6 @@ var j = 100;
 (function () {
 	"use strict";
 	console.log("hooking")
-	Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
-		if (asyncResult.status === "failed") {
-			writeToPage('Error: ' + asyncResult.error.message);
-		} else {
-			writeToPage('Added DocumentSelectionChanged handler');
-		}
-	});
 
 	// The initialize function must be run each time a new page is loaded.
 	Office.initialize = function (reason) {
@@ -144,6 +137,14 @@ var j = 100;
 			colorDiv(Office.context.document.settings.get("backgroundColor"));
 
 			showQueryString();
+
+			Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
+				if (asyncResult.status === "failed") {
+					writeToPage('Error: ' + asyncResult.error.message);
+				} else {
+					writeToPage('Added DocumentSelectionChanged handler');
+				}
+			});
 
 			// $('#ribbonDefinitionId').val(JSON.stringify(dynamic_ribbon_sample_data));
 		});
