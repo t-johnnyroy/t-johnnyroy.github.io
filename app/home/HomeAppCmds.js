@@ -5,7 +5,6 @@ var k = 0;
 var j = 100;
 (function () {
 	"use strict";
-	console.log("hooking")
 
 	// The initialize function must be run each time a new page is loaded.
 	Office.initialize = function (reason) {
@@ -1227,12 +1226,14 @@ function ChangetoRed(event) {
 }
 
 function EnableListener(event) {
+	console.log("hooking")
 	Office.context.document.addHandlerAsync(Office.EventType.DocumentSelectionChanged, documentSelectionHandler, function (asyncResult) {
 		if (asyncResult.status === "failed") {
 			writeToPage('Error: ' + asyncResult.error.message);
 		} else {
 			writeToPage('Added DocumentSelectionChanged handler');
 		}
+		event.completed();
 	});
 }
 
