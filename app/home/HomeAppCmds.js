@@ -1229,9 +1229,9 @@ function writeformula() {
 
 
 function ChangetoRed(event) {
-	Office.context.document.settings.set("backgroundColor", "6");
+	Word.context.document.settings.set("backgroundColor", "6");
 	//Save a setting in the document to make it available in future sessions
-	Office.context.document.settings.saveAsync(function (asyncResult) {
+	Word.context.document.settings.saveAsync(function (asyncResult) {
 		if (asyncResult.status == "failed") {
 			// writeToPage("Action failed with error: " + asyncResult.error.message);
 		} else {
