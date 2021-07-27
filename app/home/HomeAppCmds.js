@@ -1249,9 +1249,8 @@ function ShowAlertTest(event) {
 	// }
 	// //debugger;
 	var currentUrl = document.URL;
-	var dialogPage = "https://www2.latech.edu/~acm/HelloWorld.shtml";
+	var dialogPage = currentUrl.substring(0, currentUrl.lastIndexOf("/")) + "/Dialog.html";
 	Office.context.ui.displayDialogAsync(dialogPage, {height: 30, width: 20, displayInIframe: true});
-	app.showNotification("title", "text")
 	event.completed();
 }
 
